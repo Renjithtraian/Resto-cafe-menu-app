@@ -11,22 +11,22 @@ export const DataContext = createContext();
 export const CartContext = createContext();
 
 function App() {
+
   const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
+  
   console.log(cart);
-  const siteName = data[0]?.restaurant_name;
 
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
-      const response = await fetch(
+      const response = (await fetch(
         "https://run.mocky.io/v3/a67edc87-49c7-4822-9cb4-e2ef94cb3099"
-      )
+      ))
         setData(await response.json());
         setLoading(false);
-      
     };
     getProducts();
   }, []);
@@ -37,9 +37,9 @@ function App() {
         <Loading />
       ) : (
         <>
-          <DataContext.Provider value={{ data }}>
-            <CartContext.Provider value={{ cart, setCart }}>
-              <Navbar siteName={siteName} />
+          <DataContext.Provider value={ data }>
+            <CartContext.Provider value={[cart, setCart]}>
+              <Navbar  />
               <Main>
                 <Routes>
                   <Route path="/" element={<Home />} />

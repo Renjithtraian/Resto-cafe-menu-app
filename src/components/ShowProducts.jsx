@@ -3,10 +3,11 @@ import Details from "./Details";
 import { useContext } from "react";
 import { DataContext } from "../App";
 const ShowProducts = () => {
-  const { data } = useContext(DataContext);
+
+  const data = useContext(DataContext);
 
   const [selected, setSelected] = useState("11");
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("Salads and Soup");
 
   return (
     <>
@@ -20,7 +21,7 @@ const ShowProducts = () => {
                   key={menu.id}
                   onClick={() => {
                     setActive(menu.menu_category),
-                      setSelected(menu.menu_category_id);
+                    setSelected(menu.menu_category_id);
                   }}
                 >
                   {menu.menu_category}

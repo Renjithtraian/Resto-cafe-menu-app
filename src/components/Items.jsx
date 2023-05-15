@@ -5,7 +5,7 @@ import Addtocart from "./Addtocart";
 // import { CounterCount, CounterSet } from "../App";
 
 const Items = ({ menu }) => {
-  console.log(menu);
+  console.log("menu is",menu);
 
   return (
     <div key={menu.menu_category_id} className="dishes-main">
@@ -30,7 +30,7 @@ const Items = ({ menu }) => {
           >
             {menu.dish_Availability === false ? "Out of Stock" : ""}
           </h2>
-          <Addtocart menu={menu} id={menu.dish_id}></Addtocart>
+          <Addtocart menu={menu} id={menu.dish_id} key={menu.dish_id}></Addtocart>
           {menu.addonCat.length > 0 ? (
             <h3>Cutomization available</h3>
           ) : (
